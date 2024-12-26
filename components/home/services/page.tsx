@@ -1,9 +1,17 @@
 import { ArrowRight, Code, Cloud, Sparkles, Shield, Users } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+import { ReactNode } from 'react';
 
 export default function Services() {
-  const services = [
+  interface services {
+    icon: ReactNode; // Type for the icon
+    title: string;
+    description: string;
+    
+  }
+  
+  const services:services []= [
     {
       icon: <Sparkles className="w-8 h-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />,
       title: "Artificial Intelligence",

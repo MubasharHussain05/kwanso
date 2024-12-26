@@ -34,7 +34,7 @@ export const Header = () => {
     <nav className="bg-background bg-gray-50 w-full h-auto shadow-lg">
       <div className="items-center justify-around h-20 hidden md:flex">
          <div className="flex items-center">
-         <a className="logo-welcome" href="/"><Image src={HeadLogo} alt=""/></a>
+         <Link className="logo-welcome" href="/"><Image src={HeadLogo} alt=""/></Link>
         </div> 
 
         <div className="flex space-x-6">
