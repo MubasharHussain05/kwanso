@@ -2,6 +2,10 @@ import { Users, Clock, CreditCard } from 'lucide-react'
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+
 
 interface TechBadge {
   label: string
@@ -22,7 +26,7 @@ const talents: TalentCard[] = [
     name: "Sarah Johnson",
     role: "Senior Full-Stack",
     experience: "10+ years experience",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/talent/image1.png",
     badges: [
       { label: "React", variant: "blue" },
       { label: "Node.js", variant: "green" },
@@ -37,7 +41,7 @@ const talents: TalentCard[] = [
     name: "Michael Chen",
     role: "Cloud Architect",
     experience: "8+ years experience",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/talent/image2.png",
     badges: [
       { label: "AWS", variant: "blue" },
       { label: "Kubernetes", variant: "green" },
@@ -52,7 +56,7 @@ const talents: TalentCard[] = [
     name: "Emily Rodriguez",
     role: "AI/ML Engineer",
     experience: "6+ years experience",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/talent/image3.png",
     badges: [
       { label: "PyTorch", variant: "blue" },
       { label: "TensorFlow", variant: "green" },
@@ -67,7 +71,7 @@ const talents: TalentCard[] = [
     name: "David Kim",
     role: "Mobile Developer",
     experience: "7+ years experience",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/talent/image4.png",
     badges: [
       { label: "React Native", variant: "blue" },
       { label: "iOS", variant: "green" },
@@ -96,18 +100,18 @@ function TechnologyBadge({ label, variant }: TechBadge) {
 
 export default function TechTalent() {
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <>    <section className="px-2 md:px-6 py-16 bg-blue-50 lg:px-12 container">
+      <div className="mx-auto">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Users className="w-6 h-6 text-white" />
+          <div className="mb-4 p-2 border  w-16 h-16 items-center justify-center text-center relative  bg-blue-500 rounded-[56%_44%_70%_30%/30%_54%_46%_70%] animate-water-wave">
+            <Users className="w-8 h-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
           <h3 className="text-blue-600 font-semibold text-lg">Elite Tech Talent</h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-4xl font-bold mb-4">
               Access World-Class Tech Talent On Demand
             </h1>
             <p className="text-gray-600 text-lg mb-8">
@@ -157,9 +161,9 @@ export default function TechTalent() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
             {talents.map((talent) => (
-              <Card key={talent.name} className="p-2 md:p-6">
+              <Card key={talent.name} className="p-2 md:p-4">
                 <CardContent className="p-0">
                   <div className="flex gap-4">
                     <Avatar className="w-16 h-16">
@@ -178,7 +182,7 @@ export default function TechTalent() {
                     ))}
                   </div>
 
-                  <ul className="mt-4 space-y-2">
+                  <ul className="mt-4 text-sm space-y-2">
                     {talent.achievements.map((achievement) => (
                       <li key={achievement} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
@@ -193,6 +197,65 @@ export default function TechTalent() {
         </div>
       </div>
     </section>
+     <CTASection/>
+     </>
+
   )
 }
+
+
+ function CTASection() {
+  return (
+     <section className='px-2 md:px-6 py-16 bg-blue-500 lg:px-12 container'>
+      <div className="max-w-4xl mx-auto text-center space-y-6">
+        <h2 className="text-white text-4xl md:text-5xl font-bold">
+          Ready to Transform Your Business?
+        </h2>
+        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto">
+          Let`s discuss how we can help you achieve your digital transformation goals. Schedule a free consultation with our experts.
+        </p>
+        {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <Button 
+            size="lg" 
+            variant="secondary"
+            className="w-full sm:w-auto"
+          >
+            Schedule Consultation
+          </Button>
+          <Button 
+            variant="link" 
+            className="text-white hover:text-white/90"
+          >
+            View More Case Studies
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      </div> */}
+
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Link href="/marketing-services/">
+							<div className="py-2 md:py-4 px-10 md:px-8 bg-white hover:bg-blue-50 inline-block rounded-lg text-blue-500 font-medium ">
+							Start Your Journey
+							</div>
+						</Link>
+
+              
+            <Link 
+                href="#" 
+                className="text-white hover:text-blue-50 py-2 md:py-4 px-10 md:px-8 inline-flex items-center group"
+              >
+                <div className="  inline-block rounded-lg text-black font-medium ">
+							
+							</div>
+                View Success Stories  
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              </div>
+              </div>
+      </section>
+    
+  )
+}
+
+
 

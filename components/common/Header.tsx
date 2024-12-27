@@ -2,6 +2,8 @@
 import HeadLogo from '../../public/logo/image.png'
 import Link from "next/link";
 import { CgFormatLineHeight } from "react-icons/cg";
+import { DialogTitle } from "@radix-ui/react-dialog"; // Import DialogTitle
+
 // import { GiHamburgerMenu } from "react-icons/gi";
 
 import {
@@ -14,22 +16,23 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-// import {
-//   Sheet,
-//   SheetContent,
-//   SheetTrigger,
-// } from "@/components/ui/sheet"
-// import Image from "next/image";
-// import { useState } from 'react';
+ import {
+   Sheet,
+   SheetContent,
+   SheetTrigger,
+ } from "@/components/ui/sheet"
+
+ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 import React from 'react';
 import { components } from "@/constant";
 import Image from 'next/image';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 
 export const Header = () => {
-  // const [isSheetOpen, setIsSheetOpen] = useState(false);
+   const [isSheetOpen, setIsSheetOpen] = useState(false);
   return (
     <nav className="bg-background bg-gray-50 w-full h-auto shadow-lg">
       <div className="items-center justify-around h-20 hidden md:flex">
@@ -159,37 +162,72 @@ export const Header = () => {
       </div>
 
  {/* Mobile Menu */}
- <div className="flex justify-center gap-20 items-center md:hidden lg:hidden">
-        {/* <div>
+ <div className="flex justify-center h-20 gap-20 items-center md:hidden lg:hidden">
+         <div>
           <Link href="/" className="text-2xl font-bold text-primary">
-            <Image src={Logo} alt="logo" width={200} height={120} />
+            <Image src={HeadLogo} alt="logo" width={200} height={120} />
           </Link>
-        </div>  */}
+        </div>  
       
-        {/* <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+        
+<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
   <SheetTrigger> <GiHamburgerMenu className="h-8 w-8" color="#000" /></SheetTrigger>
-  <SheetContent>
-    
-  <div className="flex flex-col space-y-6 justify-center items-center mt-10 pb-20">
+  <SheetContent className='w-[450px] sm:w-[400px] h-screen overflow-scroll'>
+    {/* Add an accessible title for the screen readers */}
+    <DialogTitle className="sr-only">Mobile Navigation</DialogTitle>
 
-{Menu.map((menuItem, index) => (
-<ul key={index}>
-  <li>
-    <Link href={menuItem.href} className="hover:underline">
-      {menuItem.title}
-    </Link>
-  </li>
-</ul>
-))}
-<Link href="/free-strategy-session">
-<button className=" text-white font-semibold py-4 px-6  bg-blue-600  transition duration-300 ease-in-out">
-Schedule a meeting
-</button>
-</Link>
-</div>
-      
+    <div className="flex flex-col space-y-6 justify-center items-center mt-10 pb-20">
+      {/* Services Section */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4">Services</h2>
+        <div className="space-y-4">
+          <Link href="/services/ai" className="block text-gray-600 hover:text-gray-900">Artificial Intelligence</Link>
+          <Link href="/services/app-development" className="block text-gray-600 hover:text-gray-900">Application Development</Link>
+          <Link href="/services/cloud-database" className="block text-gray-600 hover:text-gray-900">Cloud & Database</Link>
+          <Link href="/services/compliance" className="block text-gray-600 hover:text-gray-900">Compliance</Link>
+          <Link href="/services/talent" className="block text-gray-600 hover:text-gray-900">On Demand Talent</Link>
+          <Link href="/services" className="block text-blue-600 hover:text-blue-700 font-medium">View all services →</Link>
+        </div>
+      </div>
+
+      {/* Industries Section */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold mb-4">Industries</h2>
+        <div className="space-y-4">
+          <Link href="/industries/retail" className="block text-gray-600 hover:text-gray-900">Retail & E-commerce</Link>
+          <Link href="/industries/healthcare" className="block text-gray-600 hover:text-gray-900">Healthcare</Link>
+          <Link href="/industries/education" className="block text-gray-600 hover:text-gray-900">Education</Link>
+          <Link href="/industries/legal" className="block text-gray-600 hover:text-gray-900">Legal</Link>
+          <Link href="/industries" className="block text-blue-600 hover:text-blue-700 font-medium">View all industries →</Link>
+        </div>
+      </div>
+
+       {/* Resources */}
+       <div>
+        <h2 className="text-xl font-semibold mb-4">Resources</h2>
+        <div className="space-y-4">
+          <Link href="/industries/retail" className="block text-gray-600 hover:text-gray-900">Digital Roadmap</Link>
+          <Link href="/industries/healthcare" className="block text-gray-600 hover:text-gray-900">Technology Assessment</Link>
+          <Link href="/industries/education" className="block text-gray-600 hover:text-gray-900">ROI Calculator</Link>
+          <Link href="/industries/legal" className="block text-gray-600 hover:text-gray-900">Project Cost Calculator</Link>
+          <Link href="/industries" className="block text-gray-600 hover:text-gray-900 font-medium">Best Practices</Link>
+          <Link href="/industries" className="block text-gray-600 hover:text-gray-900 font-medium">Technologies</Link>
+          <Link href="/industries" className="block text-gray-600 hover:text-gray-900 font-medium">Blog</Link>
+          <Link href="/industries" className="block text-gray-600 hover:text-gray-900 font-medium">Talent Profiles</Link>
+          <Link href="/industries" className="block text-blue-600 hover:text-blue-700 font-medium">View all resources →</Link>
+
+        </div>
+      </div>
+
+      <Link href="/free-strategy-session">
+        <button className=" text-white font-semibold py-4 px-6 bg-blue-600 transition duration-300 ease-in-out">
+          Schedule a meeting
+        </button>
+      </Link>
+    </div>
   </SheetContent>
-</Sheet> */}
+</Sheet>
+
       </div>
     </nav>
   );
